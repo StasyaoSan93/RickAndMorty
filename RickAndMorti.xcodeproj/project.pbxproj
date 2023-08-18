@@ -21,6 +21,7 @@
 		4A17D48A2A8DF0450036D7E7 /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A17D4892A8DF0450036D7E7 /* Detail.swift */; };
 		4AB8DB442A8E12C800463CC9 /* LocationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB8DB432A8E12C800463CC9 /* LocationInfo.swift */; };
 		4AB8DB462A8E218E00463CC9 /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB8DB452A8E218E00463CC9 /* Episode.swift */; };
+		4AD4A6562A8F139700B7F0B4 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD4A6552A8F139700B7F0B4 /* DownloadManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		4AB8DB432A8E12C800463CC9 /* LocationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInfo.swift; sourceTree = "<group>"; };
 		4AB8DB452A8E218E00463CC9 /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
 		4AB8DB472A8E3AA400463CC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		4AD4A6552A8F139700B7F0B4 /* DownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				4A17D4822A8DD8ED0036D7E7 /* ImageDowloader.swift */,
+				4AD4A6552A8F139700B7F0B4 /* DownloadManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 			files = (
 				4AB8DB442A8E12C800463CC9 /* LocationInfo.swift in Sources */,
 				4AB8DB462A8E218E00463CC9 /* Episode.swift in Sources */,
+				4AD4A6562A8F139700B7F0B4 /* DownloadManager.swift in Sources */,
 				4A17D4742A8DCEA30036D7E7 /* Characters.swift in Sources */,
 				4A17D4872A8DDFD90036D7E7 /* Loading.swift in Sources */,
 				4A17D4802A8DD6F50036D7E7 /* Card.swift in Sources */,

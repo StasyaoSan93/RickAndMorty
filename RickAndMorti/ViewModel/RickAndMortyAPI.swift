@@ -10,6 +10,8 @@ import SwiftUI
 
 final class RickAndMortyAPI: ObservableObject {
     
+    let manager = DownloadManager()
+    
     @Published var characters: Characters? = nil
     @Published var getCharactersResponce: HTTPURLResponse? = nil
     
@@ -20,13 +22,9 @@ final class RickAndMortyAPI: ObservableObject {
     @Published var getEpisodesResponce: HTTPURLResponse? = nil
     
     func getCharacters() async {
-        guard let url = URL(string: "https://rickandmortyapi.com/api/character") else { return }
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
+        let url = "https://rickandmortyapi.com/api/character"
         do {
-            let (data, responce) = try await URLSession.shared.data(for: request)
+            let (data, responce) = try await manager.getData(url: url)
             let characters = try? JSONDecoder().decode(Characters.self, from: data)
             await MainActor.run(body: {
                 self.characters = characters
@@ -38,13 +36,8 @@ final class RickAndMortyAPI: ObservableObject {
     }
     
     func getLocationInfo(url: String) async {
-        guard let url = URL(string: url) else { return }
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
         do {
-            let (data, responce) = try await URLSession.shared.data(for: request)
+            let (data, responce) = try await manager.getData(url: url)
             let location = try? JSONDecoder().decode(LocationInfo.self, from: data)
             await MainActor.run(body: {
                 self.locationInfo = location
@@ -60,14 +53,10 @@ final class RickAndMortyAPI: ObservableObject {
         for ep in 0..<result.episode.count {
             episodes += result.episode[ep].replacingOccurrences(of: "https://rickandmortyapi.com/api/episode/", with: ep == 0 ? "" : ",")
         }
-        
-        guard let url = URL(string: "https://rickandmortyapi.com/api/episode/\(episodes)") else { return }
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
+        let url = "https://rickandmortyapi.com/api/episode/\(episodes)"
+
         do {
-            let (data, responce) = try await URLSession.shared.data(for: request)
+            let (data, responce) = try await manager.getData(url: url)
             let episodes = try? JSONDecoder().decode([Episode].self, from: data)
             await MainActor.run(body: {
                 self.episodes = episodes
